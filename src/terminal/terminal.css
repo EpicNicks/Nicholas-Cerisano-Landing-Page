@@ -17,10 +17,17 @@ body { min-height: 100vh; min-height: 100dvh; background: var(--bg); color: var(
 .row { display: grid; grid-template-columns: 17ch 1fr; gap: 0 2ch; }
 .row .d, .links .d { color: var(--muted); }
 .links a, .links .f { display: grid; grid-template-columns: 11ch 1fr; gap: 0 2ch; text-decoration: none; padding: 0.1rem 0.5ch; margin-left: -0.5ch; border-radius: 3px; }
-.links a { color: var(--link); }
+.links a { color: var(--link); cursor: pointer; }
+.links a .k { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.22em; }
+/* the arrow says "opens in a new tab"; the empty alt text keeps it out of screen reader output */
+.links a .k::after { content: "\2197"; content: "\2197" / ""; display: inline-block; margin-left: 0.4ch; font-size: 0.85em; }
 .links a:hover, .links a:focus-visible { background: var(--hover); color: var(--white); }
-.links a:focus-visible { outline: 2px solid var(--link); }
-.out a.inline { color: var(--link); }
+.links a:hover .k, .links a:focus-visible .k { text-decoration-thickness: 2px; }
+.links a:active { background: color-mix(in srgb, var(--link) 25%, transparent); }
+.links a:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.out a.inline { color: var(--link); text-decoration: underline; text-underline-offset: 0.2em; }
+.muted { color: var(--muted); }
+@media (pointer: coarse) { .links a { padding: 0.5rem 0.5ch; } }
 .cmdlink { background: none; border: 0; padding: 0; font: inherit; color: var(--link); cursor: pointer; text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent); text-underline-offset: 0.2em; }
 .cmdlink:hover, .cmdlink:focus-visible { color: var(--white); text-decoration-color: currentColor; }
 .cmdlink:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }

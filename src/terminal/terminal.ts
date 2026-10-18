@@ -1069,6 +1069,8 @@ export function startTerminal(): () => void {
       if (disposed) return;
     }
     mode = "idle";
+    newBlock();
+    print(`click a name above, or type ${cmdLink("help")} for everything else.`, "muted");
     sink.focus({ preventScroll: true });
     render();
   })();
